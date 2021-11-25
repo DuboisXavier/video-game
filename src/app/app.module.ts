@@ -11,7 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { MatIconModule } from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 
@@ -19,7 +19,6 @@ import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor'
 @NgModule({
   declarations: [
     AppComponent,
-    SearchBarComponent,
     HomeComponent
   ],
   imports: [

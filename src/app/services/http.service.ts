@@ -12,13 +12,14 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   
-  getGameList(orde: string): Observable<APIResponse<Game>>{
+  getGameList(orde: string, page: number): Observable<APIResponse<Game>>{
 
-    let params = new HttpParams().set('ordering', orde);
+    let parameter = new HttpParams().set('ordering', orde).set('page', page);
+    
     
     return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games`, {
-      params: params,
-
+      params: parameter
+  
     });
   }
 

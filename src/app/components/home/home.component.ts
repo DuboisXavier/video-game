@@ -12,27 +12,36 @@ import { HttpService } from 'src/app/services/http.service';
 export class HomeComponent implements OnInit {
 
   public sort!: string;
-  public games!: Array<Game>
+  public games!: Array<Game>;
+  public page: number=1;
+
   constructor(
     private httpService: HttpService,
     private activatedRoute: ActivatedRoute,
    
   ) { }
 
-
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(() => {
-          this.searchGames('release');      
+          this.searchGames('release',2);      
       });
   }
   
-  searchGames(sort:string): void{
+  searchGames(sort:string, page: number): void{
     this.httpService
-      .getGameList(sort)
+      .getGameList(sort, page)
       .subscribe((gameList: APIResponse<Game>) => {
         this.games = gameList.results;
         console.log(gameList);
       })
+  }
+  next(sort: string): void{
+    this.page+=1;
+    this.searchGames(sort, this.page);
+  }
+  back(sort: string): void{
+    this.page-=1;
+    this.searchGames(sort, this.page);
   }
   
 }

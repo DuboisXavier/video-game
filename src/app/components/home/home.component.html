@@ -3,9 +3,8 @@
         <mat-label class="sort">Sort</mat-label>
         <mat-select
             panelClass="sort-select"
-            [(ngModel)]="sort"
-            
-            (selectionChange)="searchGames(sort)">
+            [(ngModel)]="sort"           
+            (selectionChange)="searchGames(sort, 1)">
             <mat-option value="name">Name</mat-option>
             <mat-option value="release">Release</mat-option>
             <mat-option value="added-top">Added</mat-option>
@@ -40,5 +39,7 @@
             </div>
         </div>
     </ng-container>
+    <button class="but" (click)='back(sort)'>back</button>
+    <button class="but" (click)='next(sort)'>next</button>
 </div>
 
